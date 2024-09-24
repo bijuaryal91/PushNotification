@@ -1,6 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:push_notification/api/firebase_api.dart';
+import 'package:push_notification/firebase_options.dart';
+import 'package:push_notification/pages/notification_app.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseApi().initNotification();
   runApp(const MainApp());
 }
 
@@ -12,24 +19,6 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: NotificationApp(),
-    );
-  }
-}
-
-class NotificationApp extends StatefulWidget {
-  const NotificationApp({super.key});
-
-  @override
-  State<NotificationApp> createState() => _NotificationAppState();
-}
-
-class _NotificationAppState extends State<NotificationApp> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("My World"),
-      ),
     );
   }
 }
