@@ -10,6 +10,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: NotificationApp(),
     );
   }
@@ -25,8 +26,10 @@ class NotificationApp extends StatefulWidget {
 class _NotificationAppState extends State<NotificationApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Text("My World"),
+    return const Scaffold(
+      body: Center(
+        child: Text("My World"),
+      ),
     );
   }
 }
